@@ -34,7 +34,10 @@ public class SumANumberUntilOneDigit1 {
        }
        return sum;
     }
-
+    /*
+    if number is divisible be 9 then it will return 9 if not then adding them recursively untill it become single digit will yeild
+    number%9 same
+     */
     static int digSum(int n)
     {
         if (n == 0)
@@ -43,8 +46,6 @@ public class SumANumberUntilOneDigit1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(digSum1(28101991));
-
-
+        System.out.println(digSum(99));
     }
 }
