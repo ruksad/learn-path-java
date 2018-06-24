@@ -11,7 +11,7 @@ class ThreadA extends Thread{
         try {
             synchronized (this.resourceLock) {
                 for (int i = 1; i <=6; i++) {
-                    if (this.resourceLock.flag != 1)
+                    while (this.resourceLock.flag != 1)
                         this.resourceLock.wait();
 
                     if(i%2!=0){

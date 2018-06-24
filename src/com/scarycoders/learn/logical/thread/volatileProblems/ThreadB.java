@@ -14,7 +14,7 @@ class ThreadB extends Thread{
             try {
                 for (int i = 1; i <=6; i++) {
 
-                    if (this.resourceLock.flag != 2)
+                    while (this.resourceLock.flag != 2)
                         this.resourceLock.wait();
                     if(i%2==0){
                         System.out.println(String.valueOf(i));
