@@ -21,6 +21,6 @@ public class SumAnumberUntilOneDigit {
     public static void main(String[] args) {
 
         System.out.println(sumIt("28101991"));
-        ArrayList<String> strings = new ArrayList<>();
+        //ArrayList<String> strings = new ArrayList<>();
     }
 }
