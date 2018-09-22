@@ -10,8 +10,8 @@ public class BirthdayChocolate {
     static int solve(int[] s, int d, int m) {
 
         int total_ways = 0;
-
-            for (int i = 0; i <= (s.length - m); i++) {
+        int elementnumber=0;
+          /*  for (int i = 0; i <= (s.length - m); i++) {
                 int sum = 0;
                 for (int j = i; j < (m + i); j++) {
                     if((s[j] == d && m==s.length) ||(s[j]!=d))
@@ -20,7 +20,24 @@ public class BirthdayChocolate {
                         total_ways += 1;
                     }
                 }
-            }
+            }*/
+
+          for(int i =0;i<s.length;i++){
+              int sum=0;
+
+              for(int j=i;j<s.length;j++){
+
+                  if(elementnumber>m)
+                      break;
+
+                  if(s[j]!=d)
+                      sum+=s[j];
+                  if(sum==d)
+                      total_ways+=1;
+                  elementnumber++;
+              }
+              elementnumber=1;
+          }
         return total_ways;
     }
 
