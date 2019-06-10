@@ -1,16 +1,14 @@
 package com.scarycoders.learn.hackerEarth.array;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class BirthdayChocolate {
 
-    static int solve(int[] s, int d, int m) {
+  static int solve(int[] s, int d, int m) {
 
-        int total_ways = 0;
-        int elementnumber=0;
+    int total_ways = 0;
+    int elementnumber = 0;
           /*  for (int i = 0; i <= (s.length - m); i++) {
                 int sum = 0;
                 for (int j = i; j < (m + i); j++) {
@@ -22,28 +20,31 @@ public class BirthdayChocolate {
                 }
             }*/
 
-          for(int i =0;i<s.length;i++){
-              int sum=0;
+    for (int i = 0; i < s.length; i++) {
+      int sum = 0;
 
-              for(int j=i;j<s.length;j++){
+      for (int j = i; j < s.length; j++) {
 
-                  if(elementnumber>m)
-                      break;
+        if (elementnumber > m) {
+          break;
+        }
 
-                  if(s[j]!=d)
-                      sum+=s[j];
-                  if(sum==d)
-                      total_ways+=1;
-                  elementnumber++;
-              }
-              elementnumber=1;
-          }
-        return total_ways;
+        if (s[j] != d) {
+          sum += s[j];
+        }
+        if (sum == d) {
+          total_ways += 1;
+        }
+        elementnumber++;
+      }
+      elementnumber = 1;
     }
+    return total_ways;
+  }
 
-    private static final Scanner scanner = new Scanner(System.in);
+  private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException {
        /* BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int n = scanner.nextInt();
@@ -65,8 +66,8 @@ public class BirthdayChocolate {
 
         int m = Integer.parseInt(dm[1]);*/
 
-        int[] p = {1 ,2 ,1, 3 ,2};
-        int result = solve(p, 3, 2);
+    int[] p = {1, 2, 1, 3, 2};
+    int result = solve(p, 3, 2);
 
        /* bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
@@ -74,5 +75,5 @@ public class BirthdayChocolate {
         bufferedWriter.close();
 
         scanner.close();*/
-    }
+  }
 }
