@@ -2,6 +2,7 @@ package com.scarycoders.learn.logical.string;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class FindDuplicateCharacters {
   public static Map<Character, Integer> duplicateChar(String s) {
 
     ArrayList<Character> chars = s.chars().mapToObj(x -> {
-      System.out.println(x);
+     // System.out.println(x);
      return (char) x;
     })
         .collect(Collectors.toCollection(ArrayList::new));
@@ -32,10 +33,19 @@ public class FindDuplicateCharacters {
 
   public static void main(String[] args) {
     String s = "aAhey test for duplicate caharacter";
-    Map<Character, Integer> map = duplicateChar(s);
+   // Map<Character, Integer> map = duplicateChar(s);
+    Map<Character, Integer> map = countDuplicateChars(s);
     map.entrySet().forEach(x->{
       System.out.println(x.getKey()+"="+x.getValue());
     });
+  }
+
+  public static Map<Character,Integer> countDuplicateChars(String string){
+    HashMap<Character, Integer> stringIntegerHashMap = new LinkedHashMap<>();
+    for(Character ch:string.toCharArray()){
+      stringIntegerHashMap.compute(ch,(k,v)->(v==null)?1:++v);
+    }
+    return stringIntegerHashMap;
   }
 
 }
