@@ -4,6 +4,9 @@ package com.scarycoders.learn.logical.thread.volatileProblems;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * create 3 producers and one consumer as soon as producer produces consumer should consume it
+ */
 public class ConsumerProducerLock {
 
   static class  Resource{

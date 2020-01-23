@@ -4,11 +4,16 @@ two thread are running make them run consecutively one thread prints even number
  */
 class RunThreadConsecutively {
 
+    static class Resource{
+        int flag=1;
+    }
     public static void main(String[] args) {
-        ResourceLock resourceLock = new ResourceLock();
+        /*ResourceLock resourceLock = new ResourceLock();
         ThreadA threadA = new ThreadA(resourceLock);
         ThreadB threadB = new ThreadB(resourceLock);
         threadA.start();
-        threadB.start();
+        threadB.start();*/
+
+
     }
 }
