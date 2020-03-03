@@ -9,8 +9,8 @@ import java.util.List;
 public class ConsumerProducerLockCopy {
 
     static class Resource{
-        int consumerFlag=1;
-        boolean consume=false;
+        volatile int consumerFlag=1;
+        volatile boolean consume=false;
         List<Integer> ints=new ArrayList<>();
     }
 
@@ -20,7 +20,7 @@ public class ConsumerProducerLockCopy {
             while (true){
 
                 synchronized (resource) {
-                    if (!resource.consume && resource.consumerFlag == 1) {
+                    /*if (!resource.consume && resource.consumerFlag == 1) {
                         resource.consume=true;
                         resource.ints.add(1);
                         System.out.println("produced"+1);
@@ -31,7 +31,16 @@ public class ConsumerProducerLockCopy {
                             e.printStackTrace();
                         }
 
+                    }*/
+                    while(resource.consumerFlag!=1&& resource.consume){
+                        try {
+                            resource.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
+                    resource.consume=true;
+                    resource.ints.add(1);
                     resource.notifyAll();
                 }
             }
@@ -44,7 +53,7 @@ public class ConsumerProducerLockCopy {
             while (true){
 
                 synchronized (resource){
-                    if(!resource.consume && resource.consumerFlag==2){
+                    /*if(!resource.consume && resource.consumerFlag==2){
                        resource.consume=true;
                        resource.ints.add(2);
                         System.out.println("produced"+2);
@@ -55,7 +64,17 @@ public class ConsumerProducerLockCopy {
                             e.printStackTrace();
                         }
 
+                    }*/
+                    while (resource.consume && resource.consumerFlag!=2){
+                        try {
+                            resource.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
+                    resource.consumerFlag=3;
+                    resource.consume=true;
+                    resource.ints.add(2);
                     resource.notifyAll();
                 }
             }
@@ -64,7 +83,7 @@ public class ConsumerProducerLockCopy {
         Runnable producer3=()->{
           while (true){
               synchronized (resource){
-                  if(!resource.consume && resource.consumerFlag==3){
+                  /*if(!resource.consume && resource.consumerFlag==3){
                       resource.consume=true;
                       resource.ints.add(3);
                       System.out.println("produced"+3);
@@ -75,7 +94,17 @@ public class ConsumerProducerLockCopy {
                           e.printStackTrace();
                       }
 
+                  }*/
+                  while (resource.consume && resource.consumerFlag!=3){
+                      try {
+                          resource.wait();
+                      } catch (InterruptedException e) {
+                          e.printStackTrace();
+                      }
                   }
+                  resource.consumerFlag=1;
+                  resource.consume=true;
+                  resource.ints.add(3);
                   resource.notifyAll();
               }
           }
@@ -101,7 +130,11 @@ public class ConsumerProducerLockCopy {
                         System.out.println("consumed= "+integer);
                     }
 
-
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     resource.consume=false;
                     try {
                         resource.wait();

@@ -46,6 +46,6 @@ public class SumANumberUntilOneDigit1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(digSum(99));
+        System.out.println(digSum1(998));
     }
 }
