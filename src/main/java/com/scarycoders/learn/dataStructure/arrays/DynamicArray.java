@@ -1,10 +1,10 @@
 package com.scarycoders.learn.dataStructure.arrays;
 
-import com.scarycoders.learn.dataStructure.arrays.interfaces.Array;
+import com.scarycoders.learn.dataStructure.AbstractList;
 
 import java.util.Iterator;
 
-public class DynamicArray<T> implements Iterable<T>, Array<T> {
+public class DynamicArray<T> implements Iterable<T>, AbstractList<T> {
     private T[] arr;
     private int len = 0;  //actual number of elements present in array
     private int capacity = 0; //Actual array size
