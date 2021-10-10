@@ -46,17 +46,17 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
     }
 
     @Override public boolean add(T element) {
-        Node<T> tail=this.head;
+        Node<T> temp=this.head;
         final Node<T> newNode = new Node<>(element, null);
         if(head==null){
             head=newNode;
             len++;
             return true;
         }
-        while(tail.next!=null){
-            tail=tail.next;
+        while(temp.next!=null){
+            temp=temp.next;
         }
-        tail.next=newNode;
+        temp.next=newNode;
         len++;
         return true;
     }
@@ -72,7 +72,7 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
             this.add(element);
             return true;
         }
-        Node<T> tail=this.head.next,temp=this.head;
+        Node<T> next=this.head.next,temp=this.head;
         for(int i=0;i<len;i++){
             if(index==0){
                 tNode.next=head;
@@ -81,20 +81,20 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
                 return true;
             }else if(i+1==index){
                 temp.next=tNode;
-                tNode.next=tail;
+                tNode.next=next;
                 len++;
                 return true;
             }
             temp=temp.next;
-            if(tail!=null){
-                tail=tail.next;
+            if(next!=null){
+                next=next.next;
             }
         }
         return false;
     }
 
     @Override public T remove(T element) {
-        Node<T> tail=head.next,returnElement = null,temp=head;
+        Node<T> next=head.next,returnElement = null,temp=head;
         final Node<T> tNode = new Node<>(element, null);
         if(tNode.equals(head)){
             returnElement=head;
@@ -103,14 +103,14 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
             return returnElement.data;
         }
 
-        while(tail!=null){
-            if(tail.equals(tNode)){
-                returnElement=tail;
+        while(next!=null){
+            if(next.equals(tNode)){
+                returnElement=next;
                 len--;
-                temp.next=tail.next;
+                temp.next=next.next;
                 return returnElement.data;
             }
-            tail=tail.next;
+            next=next.next;
             temp=temp.next;
         }
 
@@ -118,7 +118,7 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
     }
 
     @Override public T removeAt(int index) {
-        Node<T> tail=head.next,temp=head,returnElement;
+        Node<T> next=head.next,temp=head,returnElement;
         if(index<0){
             throw new IllegalArgumentException("Invalid index");
         }else if(index>len-1){
@@ -127,17 +127,17 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
         for(int i=0;i<len;i++){
             if(index==0){
                 returnElement=temp;
-                head=tail;
+                head=next;
                 len--;
                 return returnElement.data;
             }else if(i+1==index){
-                returnElement=tail;
-                temp.next=tail.next;
+                returnElement=next;
+                temp.next=next.next;
                 len--;
                 return returnElement.data;
             }
-            if(tail!=null){
-                tail=tail.next;
+            if(next!=null){
+                next=next.next;
             }
             temp=temp.next;
         }
@@ -147,15 +147,15 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
     @Override public Iterator<T> iterator() {
         return new Iterator<T>() {
             int length=len;
-            Node<T> tail=head;
+            Node<T> temp =head;
             @Override public boolean hasNext() {
                 return length>0;
             }
             @Override public T next() {
                 if(length<1)
                     return null;
-                Node<T> temp=tail;
-                tail=tail.next;
+                Node<T> temp= this.temp;
+                this.temp = this.temp.next;
                 length--;
                 return temp.data;
             }
