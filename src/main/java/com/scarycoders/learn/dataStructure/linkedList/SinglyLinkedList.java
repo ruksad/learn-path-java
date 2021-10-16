@@ -1,11 +1,12 @@
 package com.scarycoders.learn.dataStructure.linkedList;
 
+import com.scarycoders.learn.dataStructure.AbstractDLL;
 import com.scarycoders.learn.dataStructure.AbstractList;
 
 import java.util.Iterator;
 import java.util.Objects;
 
-public class SinglyLinkedList<T> implements AbstractList<T> {
+public class SinglyLinkedList<T> implements AbstractList<T>, AbstractDLL<T> {
 
     private class Node<T>{
         T data = null;
@@ -37,6 +38,27 @@ public class SinglyLinkedList<T> implements AbstractList<T> {
 
     private Node<T> head=null;
     private int len=0;
+
+    @Override public T peekFirst() {
+        if(isEmpty())
+            throw new IllegalArgumentException("List is empty");
+        return head.data;
+    }
+
+    @Override public T peekLast() {
+        if(isEmpty())
+            throw new IllegalArgumentException("List is empty");
+        Node<T> temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        return temp.data;
+    }
+
+    @Override public void clear() {
+        return;
+    }
+
     @Override public int size() {
         return len;
     }

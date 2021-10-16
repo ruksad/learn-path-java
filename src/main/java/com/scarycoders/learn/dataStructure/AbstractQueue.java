@@ -2,11 +2,10 @@ package com.scarycoders.learn.dataStructure;
 
 import java.util.Iterator;
 
-public interface AbstractDLL<T> {
+public interface AbstractQueue<T> extends AbstractDLL<T> {
     T peekFirst();
     T peekLast();
-    void clear();
-    int size();
-    boolean isEmpty();
+    boolean offer(T element);
+    T poll();
     Iterator<T> iterator();
 }

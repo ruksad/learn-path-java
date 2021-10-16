@@ -1,10 +1,11 @@
 package com.scarycoders.learn.dataStructure.arrays;
 
+import com.scarycoders.learn.dataStructure.AbstractDLL;
 import com.scarycoders.learn.dataStructure.AbstractList;
 
 import java.util.Iterator;
 
-public class DynamicArray<T> implements Iterable<T>, AbstractList<T> {
+public class DynamicArray<T> implements AbstractList<T>, AbstractDLL<T> {
     private T[] arr;
     private int len = 0;  //actual number of elements present in array
     private int capacity = 0; //Actual array size
@@ -32,6 +33,22 @@ public class DynamicArray<T> implements Iterable<T>, AbstractList<T> {
                 return arr[index++];
             }
         };
+    }
+
+    @Override public T peekFirst() {
+        if(isEmpty())
+            throw new ArrayIndexOutOfBoundsException("Array is Small for index");
+        return arr[0];
+    }
+
+    @Override public T peekLast() {
+        if(isEmpty())
+            throw new ArrayIndexOutOfBoundsException("Array is Small for index");
+        return arr[len-1];
+    }
+
+    @Override public void clear() {
+
     }
 
     @Override public int size() {
