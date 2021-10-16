@@ -2,26 +2,26 @@ package com.scarycoders.learn.dataStructure.queue
 
 import com.scarycoders.learn.design.pattern.strategy.Item
 import spock.lang.Specification
-import uk.co.jemos.podam.api.PodamFactory
 import uk.co.jemos.podam.api.PodamFactoryImpl
 
 class QueueTest extends Specification {
-    def podamFactory=new PodamFactoryImpl();
-    def queue=new Queue();
-    def item1=podamFactory.manufacturePojo(Item.class);
-    def item2=podamFactory.manufacturePojo(Item.class);
-    def item3=podamFactory.manufacturePojo(Item.class);
-    def item4=podamFactory.manufacturePojo(Item.class);
+    def podamFactory = new PodamFactoryImpl();
+    def queue = new Queue();
+    def item1 = podamFactory.manufacturePojo(Item.class);
+    def item2 = podamFactory.manufacturePojo(Item.class);
+    def item3 = podamFactory.manufacturePojo(Item.class);
+    def item4 = podamFactory.manufacturePojo(Item.class);
+
     def "PeekFirst"() {
         given:
-            queue.offer(item1);
-            queue.offer(item2);
-            queue.offer(item3);
+        queue.offer(item1);
+        queue.offer(item2);
+        queue.offer(item3);
         when:
-            def firstElement=queue.peekFirst();
+        def firstElement = queue.peekFirst();
         then:
         firstElement.equals(item1);
-        queue.size()==3
+        queue.size() == 3
     }
 
     def "PeekLast"() {
@@ -30,10 +30,10 @@ class QueueTest extends Specification {
         queue.offer(item2);
         queue.offer(item3);
         when:
-        def lastElement=queue.peekLast();
+        def lastElement = queue.peekLast();
         then:
         lastElement.equals(item3);
-        queue.size()==3
+        queue.size() == 3
     }
 
     def "Clear"() {
@@ -44,7 +44,7 @@ class QueueTest extends Specification {
         when:
         queue.clear();
         then:
-        queue.size()==0
+        queue.size() == 0
     }
 
     def "Offer"() {
@@ -56,7 +56,7 @@ class QueueTest extends Specification {
         queue.offer(item4);
         then:
         item4.equals(queue.peekLast());
-        queue.size()==4
+        queue.size() == 4
     }
 
     def "Poll"() {
@@ -65,11 +65,11 @@ class QueueTest extends Specification {
         queue.offer(item2);
         queue.offer(item3);
         when:
-        def polled=queue.poll();
+        def polled = queue.poll();
         then:
         polled.equals(item1);
         queue.peekFirst().equals(item2);
-        queue.size()==2
+        queue.size() == 2
     }
 
     def "Iterator"() {
@@ -78,10 +78,10 @@ class QueueTest extends Specification {
         queue.offer(item2);
         queue.offer(item3);
         when:
-        def itr=queue.iterator()
+        def itr = queue.iterator()
         then:
-        while (itr.hasNext()){
-            println (itr.next());
+        while (itr.hasNext()) {
+            println(itr.next());
         }
         true
     }

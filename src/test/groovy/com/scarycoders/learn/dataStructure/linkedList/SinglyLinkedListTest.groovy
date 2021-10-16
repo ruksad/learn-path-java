@@ -10,14 +10,14 @@ class SinglyLinkedListTest extends Specification {
 
     def "Size"() {
         given:
-            def sll = new SinglyLinkedList();
+        def sll = new SinglyLinkedList();
 
         when:
-            def item1 = podamFactory.manufacturePojo(Item.class);
-            sll.add(item1);
-            sll.add(podamFactory.manufacturePojo(Item.class))
+        def item1 = podamFactory.manufacturePojo(Item.class);
+        sll.add(item1);
+        sll.add(podamFactory.manufacturePojo(Item.class))
         then:
-            sll.size() == 2;
+        sll.size() == 2;
     }
 
     def "IsEmpty"() {
@@ -53,15 +53,15 @@ class SinglyLinkedListTest extends Specification {
     def "AddAt"() {
         given:
         def sll = new SinglyLinkedList();
-        def testData=podamFactory.manufacturePojo(Item.class)
+        def testData = podamFactory.manufacturePojo(Item.class)
         when:
         def item = podamFactory.manufacturePojo(Item.class);
-        sll.addAt(0,item);
-        sll.addAt(0,testData)
-        sll.addAt(10,podamFactory.manufacturePojo(Item.class))
-        sll.addAt(2,podamFactory.manufacturePojo(Item.class))
+        sll.addAt(0, item);
+        sll.addAt(0, testData)
+        sll.addAt(10, podamFactory.manufacturePojo(Item.class))
+        sll.addAt(2, podamFactory.manufacturePojo(Item.class))
         then:
-        def itr=sll.iterator();
+        def itr = sll.iterator();
         def next = itr.next();
         next.getItemName().equals(testData.getItemName());
     }
@@ -69,32 +69,32 @@ class SinglyLinkedListTest extends Specification {
     def "Remove"() {
         given:
         def sll = new SinglyLinkedList();
-        def testData=podamFactory.manufacturePojo(Item.class)
+        def testData = podamFactory.manufacturePojo(Item.class)
         def item = podamFactory.manufacturePojo(Item.class);
-        sll.addAt(0,item);
-        sll.addAt(0,testData)
-        sll.addAt(10,podamFactory.manufacturePojo(Item.class))
-        sll.addAt(2,podamFactory.manufacturePojo(Item.class))
+        sll.addAt(0, item);
+        sll.addAt(0, testData)
+        sll.addAt(10, podamFactory.manufacturePojo(Item.class))
+        sll.addAt(2, podamFactory.manufacturePojo(Item.class))
         when:
-            sll.remove(item)
+        sll.remove(item)
         then:
-            sll.size()==3
+        sll.size() == 3
 
     }
 
     def "RemoveAt"() {
         given:
         def sll = new SinglyLinkedList();
-        def testData=podamFactory.manufacturePojo(Item.class)
+        def testData = podamFactory.manufacturePojo(Item.class)
         def item = podamFactory.manufacturePojo(Item.class);
-        def itemAt11=podamFactory.manufacturePojo(Item.class);
-        sll.addAt(0,item);
-        sll.addAt(0,testData)
-        sll.addAt(10,podamFactory.manufacturePojo(Item.class))
-        sll.addAt(2,podamFactory.manufacturePojo(Item.class))
+        def itemAt11 = podamFactory.manufacturePojo(Item.class);
+        sll.addAt(0, item);
+        sll.addAt(0, testData)
+        sll.addAt(10, podamFactory.manufacturePojo(Item.class))
+        sll.addAt(2, podamFactory.manufacturePojo(Item.class))
         when:
         def remove = sll.removeAt(0);
-        sll.addAt(11,itemAt11);
+        sll.addAt(11, itemAt11);
         def at11 = sll.removeAt(2);
         then:
         testData.getItemName().equals(remove.getItemName())
@@ -110,9 +110,9 @@ class SinglyLinkedListTest extends Specification {
         sll.add(item1);
         sll.add(podamFactory.manufacturePojo(Item.class))
         then:
-        def itr=sll.iterator();
-        while (itr.hasNext()){
-            println (itr.next());
+        def itr = sll.iterator();
+        while (itr.hasNext()) {
+            println(itr.next());
         }
         true
     }

@@ -61,9 +61,9 @@ class DoublyLinkedListTest extends Specification {
 
     def "Remove"() {
         when:
-            dll.add(item1);
-            dll.add(item2)
-            dll.add(item3)
+        dll.add(item1);
+        dll.add(item2)
+        dll.add(item3)
 
         then:
         dll.remove(item3).equals(item3);
@@ -72,9 +72,9 @@ class DoublyLinkedListTest extends Specification {
     def "RemoveAt"() {
 
         when:
-        dll.addAt(0,item1);
-        dll.addAt(0,item2)
-        dll.addAt(0,item3)
+        dll.addAt(0, item1);
+        dll.addAt(0, item2)
+        dll.addAt(0, item3)
         dll.remove(item3);
         then:
         dll.peekFirst().equals(item2)
@@ -83,28 +83,28 @@ class DoublyLinkedListTest extends Specification {
 
     def "RemoveAt smaller index than 0"() {
         given:
-            dll.addAt(1,item1);
-            dll.addAt(2,item2)
-            dll.addAt(3,item3)
-            dll.addAt(4,item4);
+        dll.addAt(1, item1);
+        dll.addAt(2, item2)
+        dll.addAt(3, item3)
+        dll.addAt(4, item4);
         when:
         dll.removeAt(-5);
         then:
-            thrown(RuntimeException)
+        thrown(RuntimeException)
     }
 
     def "Iterator"() {
         given:
-        dll.addAt(1,item1);
-        dll.addAt(2,item2)
-        dll.addAt(3,item3)
-        dll.addAt(4,item4);
+        dll.addAt(1, item1);
+        dll.addAt(2, item2)
+        dll.addAt(3, item3)
+        dll.addAt(4, item4);
         when:
-        def itr=dll.iterator();
+        def itr = dll.iterator();
         then:
 
-        while (itr.hasNext()){
-            println (itr.next());
+        while (itr.hasNext()) {
+            println(itr.next());
         }
         true
     }
