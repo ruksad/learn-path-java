@@ -2,7 +2,7 @@ package com.scarycoders.learn.design.pattern.strategy;
 
 import java.util.Objects;
 
-public class Item {
+public class Item implements Comparable<Item> {
   private String itemName;
   private int price;
 
@@ -42,5 +42,13 @@ public class Item {
 
   @Override public String toString() {
     return "Item{" + "itemName='" + itemName + '\'' + ", price=" + price + '}';
+  }
+
+  @Override public int compareTo(Item o) {
+    //if(this.itemName==null && o.itemName==null)
+      return Integer.compare(this.price,o.price);
+
+    //assert this.itemName != null;
+    //return this.itemName.compareTo(o.getItemName());
   }
 }

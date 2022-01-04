@@ -13,4 +13,11 @@ public class ReverseString {
     public static void main(String[] args) {
         System.out.println(reverse("ruksad"));
     }
+
+    public static String stringRev(String str){
+        if(Objects.isNull(str)|| str.length()<=1){
+            return str;
+        }
+        return stringRev(str.substring(1))+str.charAt(0);
+    }
 }
