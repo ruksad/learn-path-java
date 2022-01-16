@@ -1,4 +1,4 @@
-package com.scarycoders.learn.language;
+package com.scarycoders.learn.language.staticvars;
 
 public abstract class StaticVars {
     static  int i;

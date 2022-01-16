@@ -3,6 +3,10 @@ package com.scarycoders.learn.logical;
 import java.util.Objects;
 
 public class ReverseString {
+    {
+        r=12;
+    }
+    int r;
     public static String reverse(String str){
         if(Objects.isNull(str)|| str.length()<=1){
             return str;

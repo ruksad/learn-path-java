@@ -113,6 +113,9 @@ public class StringComparision {
         {
             System.out.println(s);
         }
+        System.out.println("----------------------------------------------11");
+        StringBuilder sb = new StringBuilder("0123456789");
 
+        System.out.println(sb.delete(3, 6).deleteCharAt(4).deleteCharAt(5));
     }
 }

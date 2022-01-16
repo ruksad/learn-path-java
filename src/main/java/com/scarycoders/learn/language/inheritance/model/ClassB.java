@@ -18,9 +18,9 @@ public class ClassB extends ClassA {
   }
 
 
-  /*ClassB(int j) {
+  ClassB(int j) {
     this();
-  }*/
+  }
 
   public static void testing(){
     System.out.println("class b");
