@@ -1,9 +1,6 @@
 package com.scarycoders.learn.logical.Arrays;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -78,12 +75,33 @@ public class DuplicateIntArray {
         printArray(moveZerosToEnd(new int[]{0, 1, 0, 1, 0}));
         System.out.println("-----------------------------------");
         printArray(moveZerosToFront(new int[]{0, 1, 0, 1, 0,2,4,0}));
-
+        System.out.println("-----------------------------------");
+        System.out.println(migratoryBirds(new int[]{1,2,2,3,3,3,4,4,4,4,5,5,5,5}));
+        System.out.println(migratoryBirds(new int[]{1,2,3,4}));
     }
 
     private static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]);
         }
+    }
+
+    /**
+     * Given an array of bird sightings where every element represents a bird type id,
+     * determine the id of the most frequently sighted type.
+     * If more than 1 type has been spotted that maximum amount,
+     * return the smallest of their ids.
+     * input [1,1,2,2,3]
+     * output 1
+     * @param birds
+     * @return
+     */
+    public static int migratoryBirds(int [] birds){
+        List<Integer> birdsList = Arrays.stream(birds).boxed().collect(Collectors.toList());
+        Map<Integer,Integer> map = new TreeMap<>();
+        birdsList.forEach(bird->{
+            map.compute(bird,(key,value)-> value==null ? 1: ++value);
+        });
+        return map.entrySet().stream().max(Comparator.comparingInt(Map.Entry::getValue)).get().getKey();
     }
 }
