@@ -89,7 +89,7 @@ public class DuplicateIntArray {
     /**
      * Given an array of bird sightings where every element represents a bird type id,
      * determine the id of the most frequently sighted type.
-     * If more than 1 type has been spotted that maximum amount,
+     * If more than 1 type has been spotted that maximum time,
      * return the smallest of their ids.
      * input [1,1,2,2,3]
      * output 1
