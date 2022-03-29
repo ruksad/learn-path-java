@@ -14,8 +14,8 @@ public class MaximumSumOfAdjusant {
     }
 
     public static void main(String[] args) {
-        int a[]={3,4,5,6,7,8,-1};
-        maxAdjacentSum(a);
+        int a[]={3,4,5,6,-7,8,-1};
+        System.out.println(maxAdjacentSum(a));
 
     }
 }

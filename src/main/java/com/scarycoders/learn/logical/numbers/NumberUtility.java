@@ -58,12 +58,22 @@ public class NumberUtility {
         }
         return 0;
     }
-
+    private static  int countChocFromWrapper(int choc, int wrapper){
+        if(choc<wrapper)
+            return 0;
+        int chocFromWrapper = choc / wrapper;
+        return chocFromWrapper+countChocFromWrapper(chocFromWrapper+choc%wrapper,wrapper);
+    }
+   public static int countMaximumChoc(int amount,int price, int wrapper){
+        int choc=amount/price;
+        return choc+countChocFromWrapper(choc,wrapper);
+   }
     public static void main(String[] args) {
-        System.out.println(sumOfAllDigits(12356765));
-        System.out.println(sumOfAllDigits(3333));
-        System.out.println(-12+1);
-        System.out.println(findPairsOfSumOfNumber(new int[]{1,6,3,24,-12,9,6,11},12));
-        System.out.println(findLargestWithoutDigit(145,5));
+        //System.out.println(sumOfAllDigits(12356765));
+       // System.out.println(sumOfAllDigits(3333));
+        //System.out.println(-12+1);
+        //System.out.println(findPairsOfSumOfNumber(new int[]{1,6,3,24,-12,9,6,11},12));
+        //System.out.println(findLargestWithoutDigit(145,5));
+        System.out.println(countMaximumChoc(15,2,3));
     }
 }

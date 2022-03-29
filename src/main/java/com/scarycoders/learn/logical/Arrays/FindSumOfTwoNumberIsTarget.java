@@ -10,8 +10,8 @@ public class FindSumOfTwoNumberIsTarget {
     for (int i = 0; i < nums.length; i++) {
       for (int j = i + 1; j < nums.length; j++) {
         if (nums[i] + nums[j] == target) {
-          a[k++] = i;
-          a[k++] = j;
+          a[k++] = nums[i];
+          a[k++] = nums[j];
         }
       }
     }
@@ -20,7 +20,7 @@ public class FindSumOfTwoNumberIsTarget {
 
 
   public static void main(String[] args) {
-    int[] ints = sumOfTwoNumberIsTarget(new int[]{2, 7, 11, 15}, 9);
+    int[] ints = sumOfTwoNumberIsTarget(new int[]{2, 7, 11, 15}, 18);
     System.out.println(Arrays.toString(ints));
   }
 }

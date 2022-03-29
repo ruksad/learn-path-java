@@ -1,9 +1,6 @@
 package com.scarycoders.learn.logical.string;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StringUtility {
@@ -51,8 +48,14 @@ public class StringUtility {
 
         return result;
     }
+
+    public static List<Character> findDuplicateCharsInString(String s){
+        HashSet<Character> strings = new HashSet<>();
+        return s.chars().mapToObj(x->(char)x).filter(str->!strings.add(str)).collect(Collectors.toList());
+    }
     public static void main(String[] args) {
         //System.out.println(findSubstring("riuksadaeo",3));
         System.out.println(findSameCharsIncludingDuplicates("abcd","cebaa"));
+        System.out.println(findDuplicateCharsInString("JAVAA"));
     }
 }
