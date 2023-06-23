@@ -19,8 +19,7 @@ public class ArraysUtility {
         for (int i = 0; i < arr.length; i++) {
 
             int sum = arr[i];
-            int[] ints1 = null;
-            boolean flag = false;
+            int[] ints1;
             for (int j = i + 1; j < arr.length; j++) {
                 sum += arr[j];
                 if (sum > sumNumber)

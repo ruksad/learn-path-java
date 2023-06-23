@@ -12,6 +12,13 @@ public class AllPalindromicPartitions {
         return true;
     }
 
+    static boolean isPalindrome2(String input){
+        for(int i = 0, j = input.length()-1; i<j; i++,j--){
+            if(input.charAt(i)!=input.charAt(j))
+                return false;
+        }
+        return true;
+    }
     
     public static void main(String[] args) {
         String input="abcb";

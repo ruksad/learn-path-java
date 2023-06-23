@@ -35,7 +35,7 @@ public class DriverClass {
                 .collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
         System.out.println("Males =" + groupByGender.get("Male") + " Female =" + groupByGender.get("Female"));
 
-        // print all the departments in the the list
+        // print all the departments in the list
         employeeList.stream().map(Employee::getDepartment).distinct().forEach(System.out::println);
 
         //average age of male and female

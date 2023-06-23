@@ -36,8 +36,7 @@ public class StrategyShopingCart {
 
   private int calculateAmount() {
 
-    OptionalInt reduce = this.itemList.stream().mapToInt(x -> x.getPrice()).reduce((a, b) -> a + b);
-    int total=reduce.isPresent() ? reduce.getAsInt():0;
-    return total;
+    OptionalInt reduce = this.itemList.stream().mapToInt(Item::getPrice).reduce(Integer::sum);
+    return reduce.isPresent() ? reduce.getAsInt():0;
   }
 }
