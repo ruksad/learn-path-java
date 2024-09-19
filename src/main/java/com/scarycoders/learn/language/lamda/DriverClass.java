@@ -157,5 +157,7 @@ public class DriverClass {
                 },()->{
 
                 });
+
+        employeeList.stream().filter(x-> x.getSalary() <=20000).map(x-> (x.getSalary()) + (x.getSalary()/10)).forEach(System.out::println);
     }
 }
