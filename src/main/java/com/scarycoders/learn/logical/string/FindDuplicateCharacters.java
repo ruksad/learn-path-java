@@ -1,11 +1,6 @@
 package com.scarycoders.learn.logical.string;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,10 +29,16 @@ public class FindDuplicateCharacters {
   public static void main(String[] args) {
     String s = "aAhey test for duplicate caharacter";
    // Map<Character, Integer> map = duplicateChar(s);
-    Map<Character, Integer> map = countDuplicateChars(s);
+    /*Map<Character, Integer> map = countDuplicateChars(s);
     map.entrySet().forEach(x->{
       System.out.println(x.getKey()+"="+x.getValue());
-    });
+    });*/
+
+    ArrayList<String> strings = new ArrayList<>();
+    strings.add("88 99 200");
+    strings.add("88 99 300");
+    strings.add("12 12 15");
+    System.out.println(processLogs(strings,2));
   }
 
   public static Map<Character,Integer> countDuplicateChars(String string){
@@ -47,5 +48,37 @@ public class FindDuplicateCharacters {
     }
     return stringIntegerHashMap;
   }
+
+  public static List<String> processLogs(List<String> logs, int threshHold){
+
+    Map<String,Integer> sender=new TreeMap<>(String::compareTo);
+    Map<String,Integer> receiver=new TreeMap<>(String::compareTo);
+    logs.forEach(x->{
+      String arr[]=x.split(" ");
+
+        sender.compute(arr[0],(key,value)-> {
+          if(null==value)
+            return  1;
+          else
+            return ++value;
+        });
+        receiver.compute(arr[1],(key,value)-> null==value ? 1:++value);
+
+    });
+    List<String> objects = new ArrayList<>();
+    receiver.forEach((key,val)->{
+      if(val>=threshHold){
+        objects.add(key);
+      }
+    });
+
+    sender.forEach((k,v)->{
+      if(v>=threshHold){
+        objects.add(k);
+      }
+    });
+    return objects;
+  }
+
 
 }
